@@ -4,51 +4,51 @@ import java.util.List;
 
 public class PatologiaDTO {
 
-	private int id_pato;
-	private String nombre_pato;
-	private String causa_pato;
-	private String tratamiento_pato;
-	private String descripcion_pato;
+	private int id_patol;
+	private String nom_patol;
+	private String causa_patol;
+	private String trat_patol;
+	private String des_patol;
 	private List<SintomaDTO> lista_sintomas;
 	
-	public PatologiaDTO(int id, String nombre, String causa, String tratamiento, String descripcion,
+	public PatologiaDTO(int id_patol, String nom_patol, String causa_patol, String trat_patol, String des_patol,
 			List<SintomaDTO> lista_sintomas) {
-		this.id_pato = id;
-		this.nombre_pato = nombre;
-		this.causa_pato = causa;
-		this.tratamiento_pato = tratamiento;
-		this.descripcion_pato = descripcion;
+		this.id_patol = id_patol;
+		this.nom_patol = nom_patol;
+		this.causa_patol = causa_patol;
+		this.trat_patol = trat_patol;
+		this.des_patol = des_patol;
 		this.lista_sintomas = lista_sintomas;
 	}
 	public int getId() {
-		return id_pato;
+		return id_patol;
 	}
 	public void setId(int id) {
-		this.id_pato = id;
+		this.id_patol = id;
 	}
 	public String getNombre() {
-		return nombre_pato;
+		return nom_patol;
 	}
 	public void setNombre(String nombre) {
-		this.nombre_pato = nombre;
+		this.nom_patol = nombre;
 	}
 	public String getCausa() {
-		return causa_pato;
+		return causa_patol;
 	}
 	public void setCausa(String causa) {
-		this.causa_pato = causa;
+		this.causa_patol = causa;
 	}
 	public String getTratamiento() {
-		return tratamiento_pato;
+		return trat_patol;
 	}
 	public void setTratamiento(String tratamiento) {
-		this.tratamiento_pato = tratamiento;
+		this.trat_patol = tratamiento;
 	}
 	public String getDescripcion() {
-		return descripcion_pato;
+		return des_patol;
 	}
 	public void setDescripcion(String descripcion) {
-		this.descripcion_pato = descripcion;
+		this.des_patol = descripcion;
 	}
 	public List<SintomaDTO> getLista_sintomas() {
 		return lista_sintomas;
