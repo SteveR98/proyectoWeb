@@ -32,7 +32,7 @@ body{direction:rtl;
      background-clip: content-box;
      background-origin: content-box;
      background-size: cover;
-     color:#5E6066;
+     color:black;
     font-family:GESSTwoLight,GESSTwoMediumRegular,Droid Arabic Kufi,Helvetica,sans-serif;
     font-size:16px}
   </style>
@@ -47,7 +47,7 @@ body{direction:rtl;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="logo"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
+      <a class="logo"> <img src="img\logo_mirate.png"  width="165" height="55"> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -72,12 +72,14 @@ body{direction:rtl;
 
 
 <div class="container">
-  <CENTER ><h2>CATARATAS</h2>
-            
-    <center><table class="table table-bordered">
+<font size=100>
+ <b> <h1 align="left" style=>CATARATAS</h1></b>
+            </font>
+    <center><table style="backgroundcolor="white"; opacity: 0,5; filter:alpha(opacity=50)" class="table table-bordered">
     <tbody>
     <tr>
-        <td><img src= "img\catarata-ojos.jpg" class="img-rounded" alt="Cinque Terre" width="404" height="300">DESCRIPCIÓN <br>${patologia.descripcion}</td>
+        <td><img src= "img\catarata-ojos.jpg" class="img-rounded" alt="Cinque Terre" width="404" height="300"></td>
+        <td align="left"> <br><b>DESCRIPCIÓN  </b><br><br><div align="left" >${patologia.descripcion}<br></div></td>
     
    
    </tr>
@@ -85,19 +87,19 @@ body{direction:rtl;
         <tbody>
       <tr>
      
-        <td><center>CAUSA <br>${patologia.causa}</center></td>
+        <td colspan="2" align="left"><br><b>CAUSA</b> <br><br><div align="left" >${patologia.causa}<br></div></td>
       </tr>
       <tr>
-          <td><center>TRATAMIENTO <br>${patologia.tratamiento}</center></td>
+          <td colspan="2" align="left"><br><b>TRATAMIENTO </b><br><br> <div> <p align="left">${patologia.tratamiento}<br></p></div></td>
         
        
       </tr>
       <tr>
-        <td><center>SINTOMAS</center>
+        <td colspan="2" align="left"><br><b>SINTOMAS</b><br><br><div align="left" align-text="justify">
         <c:forEach items="${patologia.lista_sintomas}" 
         var="sintoma">
         ${sintoma.descripcion}<br>
-		</c:forEach>
+		</c:forEach></div>
      </td>
      
       </tr>
