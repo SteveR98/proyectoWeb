@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="css/estilo.css" rel="stylesheet"/>
+<script>
+
+function cambia2 (text)
+{
+	alert (text.innerHTML);
+}
+function cambia ()
+{
+	var cadena = document.getElementById("intro").value;
+	alert("metio " + cadena);
+	var raiz = document.getElementById("raizul");
+	raiz.innerHTML = "";
+	var li;
+	for (var i = 1; i <= 4; i++)
+	{
+	  li = document.createElement("li");
+	  li.appendChild(document.createTextNode("Elemento " + i));
+	  li.setAttribute("onclick", "cambia2(this);");
+	  raiz.appendChild(li);
+	}
+}
+</script>
+</head>
+
+
+<body>
+<div id="divmain">
+	<input type="text" id="intro" onkeyup="cambia();"/>
+</div>
+<div id="lista">
+<ul id="raizul">
+<li>pilla</li>
+<li>por</li>
+<li>la</li>
+<li>orilla</li>
+</ul>
+</div>
+ 
+
+</body>
+</html>

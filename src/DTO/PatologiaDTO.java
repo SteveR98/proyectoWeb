@@ -9,10 +9,10 @@ public class PatologiaDTO {
 	private String causa_patol;
 	private String trat_patol;
 	private String des_patol;
-	private List<SintomaDTO> lista_sintomas;
+	private List<SintomasDTO> lista_sintomas;
 	
 	public PatologiaDTO(int id_patol, String nom_patol, String causa_patol, String trat_patol, String des_patol,
-			List<SintomaDTO> lista_sintomas) {
+			List<SintomasDTO> lista_sintomas) {
 		this.id_patol = id_patol;
 		this.nom_patol = nom_patol;
 		this.causa_patol = causa_patol;
@@ -50,17 +50,17 @@ public class PatologiaDTO {
 	public void setDescripcion(String descripcion) {
 		this.des_patol = descripcion;
 	}
-	public List<SintomaDTO> getLista_sintomas() {
+	public List<SintomasDTO> getLista_sintomas() {
 		return lista_sintomas;
 	}
-	public void setLista_sintomas(List<SintomaDTO> lista_sintomas) {
+	public void setLista_sintomas(List<SintomasDTO> lista_sintomas) {
 		this.lista_sintomas = lista_sintomas;
 	}
 
 	public String mostrarListaSintomas ()
 	{
 		String res = "";
-		for (SintomaDTO s : lista_sintomas) {
+		for (SintomasDTO s : lista_sintomas) {
 			res += s.toString()+"<br>";
 		}
 		return res;
