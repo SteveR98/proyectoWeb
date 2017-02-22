@@ -13,8 +13,8 @@ import com.jcraft.jsch.Session;
 		
 
 			
-			private final static String S_PATH_FILE_PRIVATE_KEY = "C:/id_rsa.ppk"; //\\windows absolut path of our ssh private key locally saved
-			private final static String S_PATH_FILE_KNOWN_HOSTS = "C:/known_hosts";
+			private final static String S_PATH_FILE_PRIVATE_KEY = "C://id_rsa.ppk"; //\\windows absolut path of our ssh private key locally saved
+			private final static String S_PATH_FILE_KNOWN_HOSTS = "C://known_hosts";
 			private final static String S_PASS_PHRASE = "mypassphrase";
 			private final static int LOCAl_PORT = 3308; 
 			private final static int REMOTE_PORT = 3306; 

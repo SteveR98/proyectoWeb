@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link href="css/estilo.css" rel="stylesheet"/>
+<script>
+
+
+function iniciaObjetoRequest ()
+{
+	
+return new XMLHttpRequest();
+}
+
+function introSintoma()
+{
+	var cadena = document.getElementById("intro").value;
+	if (cadena != '') //llamo sólo si ha introducido algo: OPTIMIZO
+		{
+		xmlHttp = iniciaObjetoRequest();
+		xmlHttp.onreadystatechange = procesarEventos;
+		xmlHttp.open('GET', 'BuscarSintomasPorInicial?intro='+cadena, true); //indicamos como vamos a enviar los datos, en este caso con el metodo GET al archivo meses.php?num= el valor que le indiquemos en el textbox
+		xmlHttp.send(null);
+		
+		}
+}
+function seleccionaSintoma (text)
+{
+	alert (text);
+}
+
+function procesarEventos()
+{
+   //Obtenemos el control del TAG que contendrá la respuesta
+  if(xmlHttp.readyState==4) //ya hemos recibido respuesta del servidor
+  {
+      if(xmlHttp.status==200)// y el código de la cabecera http es bueno
+          {
+			alert("He recibido " + xmlHttp.responseText);
+			
+			var raiz = document.getElementById("raizul");
+			raiz.innerHTML = "";
+			var li;
+			var lista_sintomas = JSON.parse(xmlHttp.responseText);
+			var sintoma;
+			var descripcion;
+			for (var i = 0; i < lista_sintomas.length; i++)
+			{
+			  sintoma = lista_sintomas[i].id;
+			  descripcion = lista_sintomas[i].descripcion;
+			  li = document.createElement("li");
+			  li.appendChild(document.createTextNode(descripcion));
+			  li.setAttribute("onclick", "seleccionaSintoma("+sintoma+");");
+			  raiz.appendChild(li);
+			}
+			
+          }
+      else
+      {
+          alert("Ha ocurrido un error"+ xmlHttp.status +":"+ xmlHttp.statusText);
+      }
+  }
+
+}
+</script>
+</head>
+
+
+<body>
+<div id="divmain">
+	<input type="text" id="intro" onkeyup="introSintoma();"/>
+</div>
+<div id="lista">
+<ul id="raizul">
+<!-- <li>pilla</li>
+<li>por</li>
+<li>la</li>
+<li>orilla</li>-->
+</ul>
+</div>
+ 
+
+</body>
+</html>
