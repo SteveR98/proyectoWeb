@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
+import org.apache.log4j.Logger;
 import DTO.SintomasDTO;
 import Servicios.SintomasService;
 
@@ -24,7 +24,8 @@ import Servicios.SintomasService;
 @WebServlet("/BuscarSintomasPorInicial")
 public class BuscarSintomasPorIniciales extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
+	private final static Logger log = Logger.getLogger("mylog");
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -60,16 +61,23 @@ public class BuscarSintomasPorIniciales extends HttpServlet {
     	
     	
     	SintomasService ss = new SintomasService();
+    	String date = null;
 
+    	
     	try
     	{
     	String valorSintoma = request.getParameter("intro");
+    	
+    	
+    	
     	List<SintomasDTO> lista_sintomaDTO = ss.buscarSintomasPorInicial(valorSintoma);
     	Gson gson = new Gson();
 
     	Type tipoListaSintomas = new TypeToken<List<SintomasDTO>>(){}.getType();
     	String s = gson.toJson(lista_sintomaDTO, tipoListaSintomas);
-
+    	
+    	log.info("Petición ACEPTADA " );
+    	
     	for(SintomasDTO sintoma: lista_sintomaDTO)
     	{    	
     		valorSintoma = sintoma.getDescripcion();
@@ -80,10 +88,13 @@ public class BuscarSintomasPorIniciales extends HttpServlet {
     	System.out.println(s);
     	response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(s);
+		  log.info("OPERACION CORRECTA ");
     		} 
     	
     	catch (SQLException e) 
     	{
+    		log.error("Error", e);
+    		
     	e.printStackTrace();
     	}
 

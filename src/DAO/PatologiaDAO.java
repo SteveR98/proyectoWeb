@@ -11,12 +11,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 
 public class PatologiaDAO {
 	
 	public static final String LISTAR_PATOLOGIAS
 	= "SELECT nom_patol From Patologias Where id_patol IN (Select id_patol From Patologias Where id_patol)";
-
+	private final static Logger log = Logger.getLogger("mylog");
 
 	public PatologiaDTO buscarPorId (int id)
 	{
@@ -35,6 +37,7 @@ public class PatologiaDAO {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			log.error("ERROR");
 			e.printStackTrace();
 		}
 		finally
@@ -47,7 +50,7 @@ public class PatologiaDAO {
 	public static List<SintomasDTO> getSintomasPorPatologiaID (Connection conn, int id) throws SQLException
 	{
 		List<SintomasDTO> lista_sintomas = new ArrayList<SintomasDTO>();
-			
+			log.info("LISTA PATOLOGIAS CREADA");
 			String descripcion_sintoma = null;
 			int id_sintoma = 0;
 			SintomasDTO sintoma = null;
