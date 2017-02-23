@@ -7,7 +7,7 @@ li {
 li:HOVER
 {
 	cursor: pointer;
-	background-color: gray;
+	background-color: yellow;
 }
 
 ul {
