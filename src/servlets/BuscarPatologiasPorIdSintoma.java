@@ -13,10 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import servicios.PatologiaService;
-import dao.PatologiasDAO;
-import dto.PatologiasDTO;
-import dto.SintomasDTO;
+import DTO.PatologiasDTO;
+import Servicios.PatologiaService;
 
 /**
  * Servlet implementation class BuscarPatologiasPorSintoma
@@ -36,11 +34,12 @@ public class BuscarPatologiasPorIdSintoma extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String valorSintoma = request.getParameter("sintomaIntroducido");
 		int id_sintoma = Integer.parseInt(valorSintoma);
+		
 		PatologiaService service = new PatologiaService();
 		List<PatologiasDTO> lista_patologias = null;
-		
 		
 		lista_patologias = service.obtenerPatologiasPorSintoma(id_sintoma);
 		

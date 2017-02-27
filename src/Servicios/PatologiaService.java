@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.tomcat.util.buf.UDecoder;
+
 import DTO.MapaPatologias;
 import DTO.PatologiasDTO;
 import DTO.SintomasDTO;
@@ -26,13 +28,18 @@ public class PatologiaService {
 		List<PatologiasDTO> lista_devuelta = new ArrayList<PatologiasDTO>();
 		List<SintomasDTO> lista_sintomas = new ArrayList<SintomasDTO>();
 		
+		String nombre;
+		
 		for(PatologiasDTO patologia:lista_completa)
 		{
 			lista_sintomas = patologia.getLista_sintomas();
 			
+			nombre = patologia.getNombre_patologia();
+					
 			if(service.sintomaEncontrado(lista_sintomas, id_sintoma))
 			{
 				lista_devuelta.add(patologia);
+			}else{
 			}
 		}
 		
@@ -41,17 +48,20 @@ public class PatologiaService {
 	
 	public boolean sintomaEncontrado(List<SintomasDTO> lista_sintomas,int id_sintoma){
 		boolean encontrado = false;
+		SintomasDTO sintoma = new SintomasDTO();
 		int contador = 0;
 		int id_auxilar = 0;
 		
-		while(contador <lista_sintomas.size() && !encontrado)
+		while(contador <lista_sintomas.size()&& !encontrado)
 		{
-			id_auxilar = lista_sintomas.get(contador).getId();
+			sintoma = lista_sintomas.get(contador);
+			id_auxilar = sintoma.getId();
 			
 			if(id_auxilar == id_sintoma)
 			{
 				encontrado = true;
 			}
+			contador++;
 		}
 		
 		return encontrado;
@@ -63,11 +73,12 @@ public class PatologiaService {
 		
 		for (Integer nombre: mapapatologia.keySet())
 		{
-			System.out.println(nombre);
 			PatologiasDTO patologia = mapapatologia.get(nombre);
 	    	lista_completa.add(patologia);
 		} 
 		
+		
 		return lista_completa;
 	}
+	
 }

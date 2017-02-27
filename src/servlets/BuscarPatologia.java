@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import DTO.PatologiaDTO;
+import DTO.PatologiasDTO;
 import Servicios.PatologiaService;
 
 
@@ -21,7 +21,7 @@ import Servicios.PatologiaService;
 @WebServlet("/BuscarPatologia")
 public class BuscarPatologia extends HttpServlet {
 	private PatologiaService service_patologia;
-	private PatologiaDTO patologia;
+	private PatologiasDTO patologia;
 	
 	private static final long serialVersionUID = 1L;
 	
