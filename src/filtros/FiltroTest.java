@@ -40,9 +40,13 @@ public class FiltroTest implements Filter {
 		// place your code here
 		long tiempoInicial = System.currentTimeMillis();
 		chain.doFilter(request, response);
-
-        long tiempoFinal = System.currentTimeMillis();
+        
+		long tiempoFinal = System.currentTimeMillis();
         long tiempo = tiempoFinal - tiempoInicial;
+        long tiempototal= tiempo + tiempoInicial;
+        
+        log.debug("Tiempo total"+tiempototal);
+
         log.debug("Ha tardado "+tiempo);
 	}
 	/**
